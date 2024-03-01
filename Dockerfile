@@ -3,7 +3,7 @@ FROM mysql:latest
 
 # Set environment variables for MySQL
 ENV MYSQL_DATABASE=basketball_blog_db
-ENV MYSQL_ROOT_PASSWORD=serch
+ENV MYSQL_ROOT_PASSWORD=root_password
 ENV MYSQL_USER=sergio
 ENV MYSQL_PASSWORD=serch
 
