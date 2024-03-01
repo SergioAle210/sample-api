@@ -1,4 +1,5 @@
 import express from 'express'
+import cors from 'cors'
 import {
   getAllPosts,
   createPost,
@@ -6,18 +7,27 @@ import {
   updatePost,
   deletePost,
 } from './db.js'
+import {
+  logError,
+  request,
+  response,
+} from './log.js'
 
 const app = express()
+app.use(cors())
 const port = 3000
 const address = '127.0.0.1'
 
 app.use(express.json())
 
 app.get('/posts', async (req, res) => {
+  request('GET', '/posts', '')
   try {
     const posts = await getAllPosts()
+    response('GET', '/posts', posts)
     res.json(posts)
   } catch (error) {
+    logError(error)
     res.status(500).json({ message: error.message })
   }
 })
@@ -44,6 +54,7 @@ app.post('/posts', async (req, res) => {
     return res.status(400).json({ message: 'Missing required fields' })
   }
 
+  request('POST', '/posts', req.body)
   try {
     const result = await createPost(
       title,
@@ -54,6 +65,7 @@ app.post('/posts', async (req, res) => {
       awayScore,
       imageUrl,
     )
+    response('POST', '/posts', result)
     return res.status(201).json(result)
   } catch (error) {
     return res.status(500).json({ message: error.message })
@@ -61,10 +73,12 @@ app.post('/posts', async (req, res) => {
 })
 
 app.get('/posts/:postId', async (req, res) => {
+  request('GET', '/posts/:postId', '')
   try {
     const { postId } = req.params
     const post = await getPostById(postId)
     if (post) {
+      response('GET', '/posts/:postId', post)
       res.json(post)
     } else {
       res.status(404).json({ message: 'Post not found' })
@@ -96,6 +110,7 @@ app.put('/posts/:postId', async (req, res) => {
     return res.status(400).json({ message: 'Missing required fields' })
   }
 
+  request('PUT', '/posts/:postId', req.body)
   try {
     const result = await updatePost(
       postId,
@@ -113,6 +128,7 @@ app.put('/posts/:postId', async (req, res) => {
       return res.status(404).json({ message: 'Post not found' })
     }
 
+    response('PUT', '/posts/:postId', result)
     return res.json(result)
   } catch (error) {
     return res.status(500).json({ message: error.message })
@@ -120,9 +136,11 @@ app.put('/posts/:postId', async (req, res) => {
 })
 
 app.delete('/posts/:postId', async (req, res) => {
+  request('DELETE', '/posts/:postId', '')
   try {
     const { postId } = req.params
     const result = await deletePost(postId)
+    response('DELETE', '/posts/:postId', result)
     res.json(result)
   } catch (error) {
     res.status(500).json({ message: error.message })
