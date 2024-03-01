@@ -22,6 +22,7 @@ Necesitarás tener Node.js, npm y Docker instalados en tu sistema para ejecutar 
 Clona este repositorio y navega al directorio del proyecto:
 
 git clone "git@github.com:SergioAle210/sample-api.git"
+
 cd sample-api
 
 ## Instalar las dependencias
@@ -40,16 +41,16 @@ Esto iniciazará el servidor de Express en "http://127.0.0.1:3000"
 
 ## Endpoints
 
-+ # GET /posts: 
-Retorna un listado de todos los posts.
-+ # GET /posts/:postId: 
-Retorna el detalle de un post.
-+ # POST /posts: 
-Crea un nuevo post.
-+ # PUT /posts/:postId: 
-Modifica un post existente.
-+ # DELETE /posts/:postId: 
-Elimina un post.
++ ### GET /posts: 
+    Retorna un listado de todos los posts.
++ ### GET /posts/:postId: 
+    Retorna el detalle de un post.
++ ### POST /posts: 
+    Crea un nuevo post.
++ ### PUT /posts/:postId: 
+    Modifica un post existente.
++ ### DELETE /posts/:postId: 
+    Elimina un post.
 
 ## Navegacion hacia la API
 
