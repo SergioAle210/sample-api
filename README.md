@@ -21,7 +21,7 @@ Necesitarás tener Node.js, npm y Docker instalados en tu sistema para ejecutar 
 
 Clona este repositorio y navega al directorio del proyecto:
 
-git clone [GirHub](git@github.com:SergioAle210/sample-api.git)
+git clone git@github.com:SergioAle210/sample-api.git
 
 cd sample-api
 
