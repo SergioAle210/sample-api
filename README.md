@@ -21,7 +21,7 @@ Necesitarás tener Node.js, npm y Docker instalados en tu sistema para ejecutar 
 
 Clona este repositorio y navega al directorio del proyecto:
 
-git clone [text](git@github.com:SergioAle210/sample-api.git)
+git clone [GirHub](git@github.com:SergioAle210/sample-api.git)
 
 cd sample-api
 
@@ -37,7 +37,7 @@ Para iniciar el server y empezar a hacer los endpoints:
 
 npm start
 
-Esto iniciazará el servidor de Express en [text](http://127.0.0.1:3000)
+Esto iniciazará el servidor de Express en [Server](http://127.0.0.1:3000)
 
 ## Endpoints
 
@@ -54,7 +54,7 @@ Esto iniciazará el servidor de Express en [text](http://127.0.0.1:3000)
 
 ## Documentacion
 
-Para conocer la documentación que pertenece a la API se encuentra en [text](https://app.swaggerhub.com/home)
+Para conocer la documentación que pertenece a la API se encuentra en [Swager](https://app.swaggerhub.com/home)
 
 ## Docker
 
