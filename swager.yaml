@@ -1,0 +1,123 @@
+openapi: 3.0.0
+info:
+  title: API de Blog
+  version: "1.0.0"
+  description: Una API simple para gestionar un blog
+servers:
+  - url: http://127.0.0.1:3000
+paths:
+  /posts:
+    get:
+      summary: Obtiene una lista de todos los posts
+      responses:
+        '200':
+          description: Una lista de posts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Post'
+        '500':
+          description: Error interno del servidor
+    post:
+      summary: Crea un nuevo post
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Post'
+      responses:
+        '201':
+          description: Post creado exitosamente
+        '400':
+          description: Campos requeridos faltantes
+        '500':
+          description: Error interno del servidor
+  /posts/{postId}:
+    get:
+      summary: Obtiene un post por su ID
+      parameters:
+        - name: postId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Detalles del post
+        '404':
+          description: Post no encontrado
+        '500':
+          description: Error interno del servidor
+    put:
+      summary: Actualiza un post existente por su ID
+      parameters:
+        - name: postId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Post'
+      responses:
+        '200':
+          description: Post actualizado exitosamente
+        '400':
+          description: Campos requeridos faltantes
+        '404':
+          description: Post no encontrado
+        '500':
+          description: Error interno del servidor
+    delete:
+      summary: Elimina un post por su ID
+      parameters:
+        - name: postId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Post eliminado exitosamente
+        '404':
+          description: Post no encontrado
+        '500':
+          description: Error interno del servidor
+components:
+  schemas:
+    Post:
+      type: object
+      required:
+        - title
+        - content
+      properties:
+        id:
+          type: integer
+          description: El ID único del post
+        title:
+          type: string
+          description: El título del post
+        content:
+          type: string
+          description: El contenido del post
+        homeTeam:
+          type: string
+          description: El equipo de casa
+        awayTeam:
+          type: string
+          description: El equipo visitante
+        homeScore:
+          type: integer
+          description: El puntaje del equipo de casa
+        awayScore:
+          type: integer
+          description: El puntaje del equipo visitante
+        imageUrl:
+          type: string
+          description: La URL de la imagen del post
