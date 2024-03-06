@@ -15,7 +15,7 @@ import {
 
 const app = express()
 app.use(cors())
-const port = 221122
+const port = 21122
 const address = '127.0.0.1'
 
 app.use(express.json())
