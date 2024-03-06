@@ -16,6 +16,7 @@ import {
 const app = express()
 app.use(cors())
 const port = 221122
+const address = '127.0.0.1'
 
 app.use(express.json())
 
@@ -154,7 +155,7 @@ app.use((req, res) => {
   res.status(501).json({ message: 'Method not implemented' })
 })
 
-app.listen(port, () => {
+app.listen(port, address, () => {
   // eslint-disable-next-line no-console
   console.log(`Server listening at http://127.0.0.1:${port}`)
 })
