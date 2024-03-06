@@ -22,7 +22,7 @@ const nowInGuatemala = () => {
   return formattedDate
 }
 
-const logStream = fs.createWriteStream(join(dirname1, '../log.txt'), { flags: 'a' })
+const logStream = fs.createWriteStream(join(dirname1, '../blog_sergio.txt'), { flags: 'a' })
 
 const logError = (message) => {
   const now = nowInGuatemala()
