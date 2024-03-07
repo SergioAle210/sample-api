@@ -21,6 +21,8 @@ const address = '127.0.0.1'
 app.use(express.json())
 
 app.get('/posts', async (req, res) => {
+  // eslint-disable-next-line no-console
+  console.log({ message: 'GET /posts' })
   request('GET', '/posts', '')
   try {
     const posts = await getAllPosts()
@@ -33,6 +35,8 @@ app.get('/posts', async (req, res) => {
 })
 
 app.post('/posts', async (req, res) => {
+  // eslint-disable-next-line no-console
+  console.log({ message: 'POST /posts' })
   const {
     title,
     content,
@@ -73,6 +77,8 @@ app.post('/posts', async (req, res) => {
 })
 
 app.get('/posts/:postId', async (req, res) => {
+  // eslint-disable-next-line no-console
+  console.log({ message: 'GET /posts/:postId' })
   request('GET', '/posts/:postId', '')
   try {
     const { postId } = req.params
@@ -89,6 +95,8 @@ app.get('/posts/:postId', async (req, res) => {
 })
 
 app.put('/posts/:postId', async (req, res) => {
+  // eslint-disable-next-line no-console
+  console.log({ message: 'PUT /posts/:postId' })
   const { postId } = req.params
   const {
     title,
@@ -136,6 +144,7 @@ app.put('/posts/:postId', async (req, res) => {
 })
 
 app.delete('/posts/:postId', async (req, res) => {
+  console.log({ message: 'DELETE /posts/:postId' })
   request('DELETE', '/posts/:postId', '')
   try {
     const { postId } = req.params
