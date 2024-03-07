@@ -144,6 +144,7 @@ app.put('/posts/:postId', async (req, res) => {
 })
 
 app.delete('/posts/:postId', async (req, res) => {
+  // eslint-disable-next-line no-console
   console.log({ message: 'DELETE /posts/:postId' })
   request('DELETE', '/posts/:postId', '')
   try {
